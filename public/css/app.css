@@ -1,0 +1,41 @@
+body{
+  font-family: 'Times New Roman';
+}
+#modal_register .modal-dialog, #modal_login .modal-dialog {
+  width: 300px; }
+
+.navbar {
+  min-height: 100px; }
+
+.navbar-brand {
+  height: auto; }
+
+.navbar-default .navbar-nav > li > a {
+  line-height: 100px;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #337ab7; }
+
+.navbar-nav.link {
+  float: none;
+  display: inline-block;
+  padding: 25px 0; }
+
+.navbar-nav.link > li > a {
+  line-height: 25px; }
+
+.form-control {
+    border:none;
+  border-bottom: 1px solid #000;
+  border-radius: 0;
+  box-shadow: none; }
+  .form-control:focus {
+    box-shadow: none; }
+
+select {
+  -webkit-appearance: none; }
+.btn-primary.disabled.focus, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled].focus, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover{
+      background-color: #337ab7;
+    border-color: #2e6da4;
+}
+/*# sourceMappingURL=app.css.map */

@@ -25,7 +25,7 @@
 </head>
 <body id="app-layout">
 <?php 
-    $countries = Countries::all(); 
+    // $countries = Countries::all(); 
 ?>
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">

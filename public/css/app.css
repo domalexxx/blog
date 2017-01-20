@@ -1,6 +1,6 @@
-body{
+/*body{
   font-family: 'Times New Roman';
-}
+}*/
 #modal_register .modal-dialog, #modal_login .modal-dialog {
   width: 300px; }
 
@@ -37,5 +37,8 @@ select {
 .btn-primary.disabled.focus, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled].focus, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover{
       background-color: #337ab7;
     border-color: #2e6da4;
+}
+input[type=file]{
+  border-bottom: none;
 }
 /*# sourceMappingURL=app.css.map */

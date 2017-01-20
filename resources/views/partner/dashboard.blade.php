@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -51,8 +52,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <select name="" id="input" class="form-control" required="required">
-                                    <option value="">Currency</option>
-
+                                   
                                 </select>
                             </div>
                             <label class="control-label col-sm-6 text-left">

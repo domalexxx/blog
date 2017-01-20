@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Partnerauth;
 
 use App\Partner;
@@ -45,8 +44,15 @@ class AuthController extends Controller
     if (Auth::guard('partner')->check())
     {
       return redirect('/partner');
-    }
-    
+    }  
+    return view('partner.auth.login');
+  }
+  public function register()
+  {
+    if (Auth::guard('partner')->check())
+    {
+      return redirect('/partner');
+    }  
     return view('partner.auth.login');
   }
 }

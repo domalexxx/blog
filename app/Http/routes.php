@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::post('/countriesdata', 'HomeController@index');
 Route::group(['middleware' => ['web']], function () {
     //Login Routes...
     Route::get('/partner/login','PartnerAuth\AuthController@showLoginForm');
@@ -27,7 +28,5 @@ Route::group(['middleware' => ['web']], function () {
     // Registration Routes...
     Route::get('partner/register', 'PartnerAuth\AuthController@showRegistrationForm');
     Route::post('partner/register', 'PartnerAuth\AuthController@register');
-
-    Route::get('/partner', 'AdminController@index');
 
 });

@@ -147,8 +147,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Webpatser\Countries\CountriesServiceProvider::class,
-        Moharrum\LaravelGeoIPWorldCities\LaravelGeoIPWorldCitiesServiceProvider::class,
+        // DougSisk\CountryState\CountryStateServiceProvider::class,
+        // Webpatser\Countries\CountriesServiceProvider::class,
+        // Moharrum\LaravelGeoIPWorldCities\LaravelGeoIPWorldCitiesServiceProvider::class,
 
         /*
          * Application Service Providers...

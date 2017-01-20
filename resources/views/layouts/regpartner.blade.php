@@ -1,3 +1,6 @@
+<?php 
+$countries = DB::select('select * from countries');
+?>
 <div class="modal fade bs-example-modal-lg in" "="" id="partnerReg" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -25,26 +28,27 @@
               <input type="text" class="form-control" id="business_number" placeholder="Enter your Business Number" name="business_number">
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group office_location">
             <label for="office_location" class="col-md-2 control-label">Office Location:</label>
 
             <div class="col-md-3">
-                        <select name="office_location[]" id="office_location_country" class="form-control" required="required">
-                            <option value="">Select Country</option>
-                            @foreach ($countries as $country)
-                                <option value="">{{ $country->name }}</option>
+                        <select name="office_location[]" id="office_location_country" class="form-control countries" required="required">
+                           <option value="">Select country</option>
+                            @foreach($countries as $country) 
+                              <option value="{{ $country->country_id }}">{{ $country->country_name }}</option>
                             @endforeach
+                            
                         </select>
             </div>
             <div class="col-md-3">
-                 <select name="office_location[]" id="office_location_state" class="form-control" required="required">
-                            <option value="">Select State/Province</option>
+                 <select name="office_location[]" id="office_location_state" class="form-control states" required="required">
+                  <option value="">Select country first</option>
                         </select>
             </div>
             <div class="col-md-3">
-                 <select name="office_location[]" id="office_location_city" class="form-control" required="required">
-                            <option value="">Select City</option>
-                        </select>
+                 <select name="office_location[]" id="office_location_city" class="form-control cities" required="required">
+                    <option value="">Select state/province first</option>
+                  </select>
             </div>
           </div>
           <div class="form-group">
@@ -59,26 +63,26 @@
             </div>
 
           </div>
-          <div class="form-group">
+          <div class="form-group branch_location">
             <label for="branch_location" class="col-md-2 control-label">Branch Location:</label>
 
             <div class="col-md-3">
-                        <select name="branch_location[]" id="branch_location_country" class="form-control" required="required">
-                            <option value="">Select Country</option>
-                            @foreach ($countries as $country)
-                                <option value="">{{ $country->name }}</option>
-                            @endforeach
+                        <select name="branch_location[]" id="branch_location_country" class="form-control countries" required="required">
+                            <option value="">Select country</option>
+                             @foreach($countries as $country) 
+                               <option value="{{ $country->country_id }}">{{ $country->country_name }}</option>
+                             @endforeach
                         </select>
             </div>
             <div class="col-md-3">
-                 <select name="branch_location[]" id="branch_location_state" class="form-control" required="required">
-                            <option value="">Select State/Province</option>
+                 <select name="branch_location[]" id="branch_location_state" class="form-control states" required="required">
+                            <option value="">Select country first</option>
                         </select>
             </div>
             <div class="col-md-3">
-                 <select name="branch_location_city" id="input" class="form-control" required="required">
-                            <option value="">Select City</option>
-                        </select>
+                 <select name="branch_location_city" id="input" class="form-control cities" required="required">
+                    <option value="">Select state/province first</option>
+                </select>
             </div>
           </div>
           <div class="form-group">
@@ -106,9 +110,7 @@
             <label for="inputPassword3" class="col-sm-2 control-label">Office Telephone:</label>
             <div class="col-sm-2">
               <select name="" id="input" class="form-control" required="required">
-              	@foreach ($countries as $country)
-                  <option value="" @if ($country->iso_3166_3 == 'CAN') selected @endif >{{ $country->iso_3166_3 }} (+{{ $country->calling_code }})</option>
-                @endforeach
+              	
               </select>
             </div>
             <div class="col-sm-3">
@@ -119,9 +121,7 @@
             <label for="inputPassword3" class="col-sm-2 control-label">Branch Manager's Cellphone:</label>
             <div class="col-sm-2">
               <select name="" id="input" class="form-control" required="required">
-              	@foreach ($countries as $country)
-                  <option value="" @if ($country->iso_3166_3 == 'CAN') selected @endif >{{ $country->iso_3166_3 }} (+{{ $country->calling_code }})</option>
-                @endforeach
+              	
               </select>
             </div>
             <div class="col-sm-3">

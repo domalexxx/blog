@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <?php 
-    $countries = Countries::all(); 
+$countries = DB::select('select * from countries');
 ?>
 <div class="container">
 <div id="successMessageRegister alert alert-success"></div>
@@ -40,27 +40,25 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group pickup">
                             <label for="pickup_location" class="col-md-2 control-label">Pick-up Location:</label>
 
                             <div class="col-md-3">
-                                        <select name="" id="input" class="form-control" required="required">
-                                            <option value="">Select Country</option>
-                                            @foreach ($countries as $country)
-                                                <option value="">{{ $country->name }}</option>
-                                            @endforeach
+                                        <select name="country" class="countries form-control" required="required">
+                                        <option value="">Select country</option>
+                                        @foreach($countries as $country) 
+                                        <option value="{{ $country->country_id }}">{{ $country->country_name }}</option>
+                                        @endforeach
                                         </select>
                             </div>
                             <div class="col-md-3">
-                                 <select name="" id="input" class="form-control" required="required">
-                                            <option value="">Select State/Province</option>
-                                            <option>British Columbia</option>
+                                 <select name="state" class="states form-control" required="required">
+                                 <option value="">Select country first</option>
                                         </select>
                             </div>
                             <div class="col-md-3">
-                                 <select name="" id="input" class="form-control" required="required">
-                                            <option value="">Select City</option>
-                                            <option value="">Vancouver</option>
+                                 <select name="city" class="form-control cities" required="required">
+                                            <option value="">Select state/province first</option>
                                         </select>
                             </div>
                         </div>
@@ -101,27 +99,25 @@
                             <input id="pickup_location" type="text" class="form-control" name="pickup_location" placeholder="Postal Code">
                           </div>
                         </div>  
-                        <div class="form-group">
-                            <label for="pickup_location" class="col-md-2 control-label">Package Destination:</label>
+                        <div class="form-group destination">
+                            <label for="package_destination" class="col-md-2 control-label">Package Destination:</label>
 
                             <div class="col-md-3">
-                                 <select name="" id="input" class="form-control" required="required">
-                                            <option value="">Select Country</option>
-                                            @foreach ($countries as $country)
-                                                <option value="">{{ $country->name }}</option>
-                                            @endforeach
+                                 <select name="" class="countries form-control" required="required">
+                                 <option value="">Select country</option>
+                                 @foreach($countries as $country) 
+                                        <option value="{{ $country->country_id }}">{{ $country->country_name }}</option>
+                                        @endforeach
                                         </select>
                             </div>
                         <div class="col-md-3">
-                                 <select name="" id="input" class="form-control" required="required">
-                                            <option value="">Select State/Province</option>
-                                            <option>British Columbia</option>
+                                 <select name="" class="form-control states" required="required">
+                                 <option value="">Select country first</option>
                                         </select>
                             </div>
                         <div class="col-md-3">
-                                 <select name="" id="input" class="form-control" required="required">
-                                            <option value="">Select City</option>
-                                            <option value="">Vancouver</option>
+                                 <select name="" class="form-control cities" required="required">
+                                            <option value="">Select state/province first</option>
                                         </select>
                             </div>
                             </div>

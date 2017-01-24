@@ -38,11 +38,12 @@ class RedirectIfNotPartner
  * @param  string|null  $guard
  * @return mixed
  */
-public function handle($request, Closure $next, $guard = 'partner')
-{
-    if (!Auth::guard($guard)->check()) {
-        return redirect('/');
-    }
+    public function handle($request, Closure $next, $guard = 'partner')
+    {
+        if (!Auth::guard($guard)->check()) {
+            return redirect('/');
+        }
 
-    return $next($request);
+        return $next($request);
+    }
 }

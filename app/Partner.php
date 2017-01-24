@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\Partner as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Partner extends Authenticatable
 {

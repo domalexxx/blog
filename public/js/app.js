@@ -49,15 +49,23 @@
                 // associate_errors(data['errors'], $( "#regForm" ))
               $.each(data.errors, function( index, value ) {
                 var errorDiv = '#'+index+'_error';
+                                console.log(index);
                 var errorField = $form.find('.'+index+'-group');
                 var input = errorField.find('input');
-                errorField.addClass('has-error').find('.help-block').text(value);
+                var select = errorField.find('select');
+                errorField.addClass('has-error');
                 input.keyup(function(event) {
                     errorField.removeClass('has-error');
                     var text = errorField.find('.help-block');
-                    console.log(text);
+                    // console.log(text);
                     text.text('');
                 });
+                // select.keyup(function(event) {
+                //     errorField.removeClass('has-error');
+                //     var text = errorField.find('.help-block');
+                //     console.log(text);
+                //     text.text('');
+                // });
               });
               $('#successMessage').empty();          
             } 
@@ -146,6 +154,10 @@
         $(".partnerModalLogin").click(function() {
             $('#partnerReg').modal('hide');
             $('#partnerLog').modal('show');
+        });
+        $(".partnerModalRegister").click(function() {
+            $('#partnerReg').modal('show');
+            $('#partnerLog').modal('hide');
         });
         var options = [];
 

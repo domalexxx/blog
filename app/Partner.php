@@ -12,7 +12,7 @@ class Partner extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'company_name', 'business_number', 'office_location', 'branch_location',
+        'company_name', 'business_number', 'office_location', 'branch_location', 'password', 'office_email',
     ];
 
     /**

@@ -39,7 +39,6 @@ $countries = DB::select('select * from countries');
                                 <input id="pickup_time" type="text" class="form-control" name="pickup_time" value="" required autofocus>
                             </div>
                         </div>
-
                         <div class="form-group pickup">
                             <label for="pickup_location" class="col-md-2 control-label">Pick-up Location:</label>
 

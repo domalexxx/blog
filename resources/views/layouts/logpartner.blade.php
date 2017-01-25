@@ -6,7 +6,12 @@
         <h4 class="modal-title text-center" id="myModalLabel">LOGIN AS OUR DELIVERY MEMBER</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" id="partnerLogForm" method="POST" action="{{ url('/partner/login') }}">
+        <div class="form-group text-right">
+          <div class="col-md-12">
+              <button type="button" class="btn btn-success partnerModalRegister">SIGN UP</button>
+          </div>
+        </div>  
           <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">22HOUR ID:</label>
             <div class="col-sm-4">

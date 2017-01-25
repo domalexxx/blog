@@ -43,7 +43,7 @@
 				    <div class="password_confirmation-group form-group">
 				        <div class="input-group">
 						    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-						    <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="Confirm Your  Password">
+						    <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="Confirm Your Password">
 					    </div>
 				        <p class="help-block"></p>
 				    </div>

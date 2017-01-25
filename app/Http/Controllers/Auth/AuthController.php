@@ -144,21 +144,21 @@ class AuthController extends Controller
             ]);
     }
     protected function sendLockoutResponse(Request $request)
-{
-    $seconds = $this->limiter()->availableIn(
-        $this->throttleKey($request)
-    );
+  {
+      $seconds = $this->limiter()->availableIn(
+          $this->throttleKey($request)
+      );
 
-    $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
+      $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
 
-    if ($request->ajax()) {
-        return response()->json([
-            'error' => $message
-        ], 401);
-    }
+      if ($request->ajax()) {
+          return response()->json([
+              'error' => $message
+          ], 401);
+      }
 
-    return redirect()->back()
-        ->withInput($request->only($this->username(), 'remember'))
-        ->withErrors([$this->username() => $message]);
-}
+      return redirect()->back()
+          ->withInput($request->only($this->username(), 'remember'))
+          ->withErrors([$this->username() => $message]);
+  }
 }

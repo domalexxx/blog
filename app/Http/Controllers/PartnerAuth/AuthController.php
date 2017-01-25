@@ -42,6 +42,9 @@ class AuthController extends Controller
      $userData = array(
        'company_name'      => $formFields['company_name'],
        'business_number'      => $formFields['business_number'],
+       'office_email'      => $formFields['office_email'],
+       'password'         => $formFields['password'],
+       'password_confirmation'         => $formFields['password_confirmation'],
        // 'office_location'      => $formFields['office_location'],
        'business_license_number'      => $formFields['business_license_number'],
        // 'scanned_business'      => $formFields['scanned_business'],
@@ -54,23 +57,27 @@ class AuthController extends Controller
          'company_name' => 'required|max:255',
          'business_number' => 'required',
          'business_license_number' => 'required',
+         'office_email' => 'required|email',
          // 'office_location.*.country' => 'required',
-          // 'scanned_business' => 'required',
-         // 'lname' => 'required|max:255',
-         // 'email' => 'required|email|max:255|unique:users',
-         // 'password' => 'required|confirmed|min:6',
-         // 'password_confirmation' => 'required|min:6',
+         // 'office_location.*.state' => 'required',
+         // 'office_location.*.city' => 'required',
+         // 'office_location.*.street' => 'required',
+         // 'office_location.*.suite' => 'required',
+         // 'office_location.*.postalcode' => 'required',
+        'password' => 'required|confirmed|min:6',
+        'password_confirmation' => 'required|min:6'
      ];
-     // foreach($formFields['office_location'] as $key => $val)
-     //  {
-     //    $rules['office_location['.$key.']'] = 'required';
-     //  }
-
      $messages = [
          'company_name.required' => 'Please enter your Company Name',
          'business_number.required' => 'Please enter your Business Number',
          'business_license_number.required' => 'Please enter your Business License Number',
-         // 'office_location.required' => 'Please enter your Office Location',
+         'office_email.required' => 'Please enter your Office Email',
+         // 'office_locationcountry.required' => 'Please enter your Office Location country',
+         // 'office_location-state.required' => 'Please enter your Office Location state/province',
+         // 'office_location-city.required' => 'Please enter your Office Location city',
+         // 'office_location-street.required' => 'Please enter your Office Location street',
+         // 'office_location-suite.required' => 'Please enter your Office Location suite',
+         // 'office_location-postalcode.required' => 'Please enter your Office Location postalcode',
          // 'lname.required' => 'Please enter your Last Name',
          // 'email.required' => 'Please enter your E-mail address!',
      ];
@@ -84,8 +91,8 @@ class AuthController extends Controller
      //save password to show to user after registration
          // $password = $userData['password'];
      //hash it now
-         // $userData['password'] = bcrypt($userData['password']);
-         // unset($userData['password_confirmation']);
+         $userData['password'] = bcrypt($userData['password']);
+         unset($userData['password_confirmation']);
      //save to DB user details
        if(Partner::create($userData)) {  
            //return success  message

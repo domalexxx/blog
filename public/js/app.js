@@ -115,6 +115,44 @@
                 }
             });
         });
+        // Partner submition
+        $("#partnerLogForm").submit(function(e) {
+            e.preventDefault();
+            var loginForm = $(this);
+            var formData = loginForm.serialize();
+            $('#form-errors-email').html("");
+            $('#form-errors-password').html("");
+            $('#form-login-errors').html("");
+            $("#email-div").removeClass("has-error");
+            $("#password-div").removeClass("has-error");
+            $("#login-errors").removeClass("has-error");
+            $.ajax({
+                url: '/partner/login',
+                type: 'POST',
+                data: formData,
+                success: function(data) {
+                    $('#modal_login').modal('hide');
+                     window.location = '/partner/login';
+                    // location.reload(true);
+                },
+                error: function(data) {
+                    console.log(data.responseText);
+                    var obj = jQuery.parseJSON(data.responseText);
+                    if (obj.email) {
+                        $("#logForm .email-group").addClass("has-error");
+                        $('#logForm .email-group .help-block').html(obj.email);
+                    }
+                    if (obj.password) {
+                        $("#logForm .password-group").addClass("has-error");
+                        $('#logForm .password-group .help-block').html(obj.password);
+                    }
+                    if (obj.error) {
+                        $("#login-errors").addClass("has-error");
+                        $('#form-login-errors').html(obj.error);
+                    }
+                }
+            });
+        });
         
 /* Checkbox urgent */
 
@@ -188,7 +226,7 @@ $( '.dropdown-menu a' ).on( 'click', function( event ) {
        if(countryID){
            $.ajax({
                type:'POST',
-               url:'countriesdata',
+               url:'/countriesdata',
                data:'country_id='+countryID,
                success:function(html){
                    $('.pickup .states').html(html);

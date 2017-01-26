@@ -18,15 +18,26 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
 Route::post('/countriesdata', 'HomeController@index');
-Route::group(['middleware' => ['web']], function () {
+
+
+Route::get('partner/login','PartnerAuth\AuthController@showLoginForm');
+
+Route::post('partner/login','PartnerAuth\AuthController@login');
+
+Route::get('partner/logout','PartnerAuth\AuthController@logout');
+
+Route::get('partner/register', 'PartnerAuth\AuthController@showRegistrationForm');
+
+Route::post('partner/register', 'PartnerAuth\AuthController@register');
+
+Route::group(['middleware' => ['guest']], function () {
     //Login Routes...
-    Route::get('/partner/login','PartnerAuth\AuthController@showLoginForm');
-    Route::post('/partner/login','PartnerAuth\AuthController@login');
-    Route::get('/partner/logout','PartnerAuth\AuthController@logout');
+    
+	Route::get('/partner/login','PartnerAuth\AuthController@showLoginForm');
 
     // Registration Routes...
-    Route::get('partner/register', 'PartnerAuth\AuthController@showRegistrationForm');
-    Route::post('partner/register', 'PartnerAuth\AuthController@register');
+    
 
 });

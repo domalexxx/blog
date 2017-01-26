@@ -18,15 +18,15 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     protected $redirectTo = '/partner';
-    protected $guard = 'partner';
+    protected $guard = 'partners';
   
-  public function showLoginForm()
-  {
-    if (Auth::guard('partner')->check())
+    public function __construct()
     {
-      return redirect('/partner');
+        $this->middleware('guest', ['except' => 'logout']);
     }
-    
+
+  public function showLoginForm(Request $request)
+  { 
     return view('partner.auth.login');
   }
   
@@ -114,13 +114,87 @@ class AuthController extends Controller
     Auth::guard('partner')->logout();
     return redirect('/partner/login');
   }
-  public function login()
+  public function login(Request $request)
   {
-    if (Auth::guard('partner')->check())
-    {
-      return redirect('/partner');
-    }
+    // $email = Input::get('email');
+    // $password = Input::get('password');
+    // parse_str($inputData, $formFields); 
+    $rules = [
+      'office_email' => 'required|email',
+      'password' => 'required|min:6',
+    ];
+    $messages = [
+        'office_email.required' => 'Please enter your Office Email',
+        'password.required' => 'Please enter your Business Number',
+        // 'business_license_number.required' => 'Please enter your Business License Number',
+        // 'office_email.required' => 'Please enter your Office Email',
+        // 'office_locationcountry.required' => 'Please enter your Office Location country',
+        // 'office_location-state.required' => 'Please enter your Office Location state/province',
+        // 'office_location-city.required' => 'Please enter your Office Location city',
+        // 'office_location-street.required' => 'Please enter your Office Location street',
+        // 'office_location-suite.required' => 'Please enter your Office Location suite',
+        // 'office_location-postalcode.required' => 'Please enter your Office Location postalcode',
+        // 'lname.required' => 'Please enter your Last Name',
+        // 'email.required' => 'Please enter your E-mail address!',
+    ];
+    $validator = Validator::make($request->all(),$rules,$messages);
+    //      if($validator->fails())
+    //          return Response::json(array(
+    //              'fail' => true,
+    //              'errors' => $validator->getMessageBag()->toArray()
+    //          ));
+    $this->validate($request, [
+                'office_email' => 'required|email',
+                'password' => 'required',
+            ]);
+            if (auth()->guard('partner')->attempt(['office_email' => $request->input('office_email'), 'password' => $request->input('password')]))
+            {
+                $user = auth()->guard('partner')->user();
+                return redirect('/partner/login');
+            }else{
+              return Response::json(array(
+             'fail' => true,
+             'errors' => $validator->getMessageBag()->toArray()
+         ));
+            }
+
+    // if (Auth::guard('partners')->attempt(['office_email' => '', 'password' => '']))
+    // {
+    //   return redirect('/partner');
+    // }
     
-    return view('partner.auth.login');
+    // return view('partner.auth.login');
+  }
+  protected function sendFailedLoginResponse(Request $request)
+    {
+        if ($request->ajax()) {
+            return response()->json([
+                'error' => Lang::get('auth.failed')
+            ], 401);
+        }
+
+        return redirect()->back()
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors([
+                $this->username() => Lang::get('auth.failed'),
+            ]);
+    }
+    protected function sendLockoutResponse(Request $request)
+  {
+      $seconds = $this->limiter()->availableIn(
+          $this->throttleKey($request)
+      );
+
+      $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
+
+      if ($request->ajax()) {
+          return response()->json([
+              'error' => $message
+          ], 401);
+      }
+
+      return redirect()->back()
+          ->withInput($request->only($this->username(), 'remember'))
+          ->withErrors([$this->username() => $message]);
   }
 }

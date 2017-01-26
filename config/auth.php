@@ -51,7 +51,7 @@ return [
         ],
         'partner' => [
             'driver' => 'session',
-            'provider' => 'partner',
+            'provider' => 'partners',
         ],
     ],
 
@@ -77,7 +77,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'partner' => [
+        'partners' => [
                 'driver' => 'eloquent',
                 'model' => App\Partner::class,
             ]
@@ -115,24 +115,24 @@ return [
             'expire' => 60,
         ],
         'partners' => [
-            'provider' => 'partner',
+            'provider' => 'partners',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],
     ],
 
-    'multi' => [
-        'user' => [
-            'driver' => 'eloquent',
-            'model'  => App\User::class,
-            'table'  => 'users'
-        ],
-        'admin' => [
-            'driver' => 'eloquent',
-            'model'  => App\Admin::class,
-            'table'  => 'admins'
-        ]
-     ],
+    // 'multi' => [
+    //     'user' => [
+    //         'driver' => 'eloquent',
+    //         'model'  => App\User::class,
+    //         'table'  => 'users'
+    //     ],
+    //     'admin' => [
+    //         'driver' => 'eloquent',
+    //         'model'  => App\Admin::class,
+    //         'table'  => 'admins'
+    //     ]
+    //  ],
 
 ];

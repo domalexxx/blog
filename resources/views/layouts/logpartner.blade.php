@@ -7,17 +7,18 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="partnerLogForm" method="POST" action="{{ url('/partner/login') }}">
+              {{ csrf_field() }}
         <div class="form-group text-right">
           <div class="col-md-12">
               <button type="button" class="btn btn-success partnerModalRegister">SIGN UP</button>
           </div>
         </div>  
           <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">22HOUR ID:</label>
+            <label for="ID" class="col-sm-2 control-label">22HOUR ID:</label>
             <div class="col-sm-4">
 	           <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input type="text" class="form-control" id="inputEmail3" placeholder="">
+              <input name="office_email" type="text" class="form-control" placeholder="">
               </div>
             </div>
           </div>
@@ -26,11 +27,11 @@
             <div class="col-sm-4">
                      <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="password" class="form-control" id="inputPassword3" placeholder="">
+              <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="">
                 </div>
             </div>
           </div>
-          <div class="form-group">
+         <!--  <div class="form-group">
             <label for="inputPassword3" class="col-sm-5 control-label">EMAIL/TEXT MESSAGE VERIFICATION CODE:</label>
             <div class="col-sm-2">
               <input type="password" class="form-control" id="inputPassword3" placeholder="">
@@ -41,7 +42,7 @@
             <div class="col-sm-2">
               <input type="password" class="form-control" id="inputPassword3" placeholder="">
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
             <div class="checkbox col-sm-offset-2 col-sm-2">
               <label class="control-label"><input type="checkbox"> Remember me</label>

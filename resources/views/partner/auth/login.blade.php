@@ -12,16 +12,36 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
-        
-                        <div class="form-group">
-                                <label for="city_delivery" class="col-sm-3 control-label">City of Delivery:</label>
-                                <div class="col-sm-3">
-                                    <select name="city_delivery" id="city_delivery" class="form-control" required="required">
-                                        <option value="">Choose your city</option>
-                                        <option value="">Vancouver</option>
-                                    </select>
-                                </div>
-                                     <div class="btn" style="position: relative;">
+                        <div class="form-group branch_location">
+                          <label for="branch_location" class="col-md-3 control-label">Delivery Destination:</label>
+                          <div class="col-md-3">
+                            <select name="branch_location[country]" id="branch_location_country" class="form-control countries" required="required">
+                                <option value="">Select Country</option>
+                               @foreach($countries as $country) 
+                                  <option value="{{ $country->country_id }}">{{ $country->country_name }}</option>
+                                @endforeach
+                            </select>
+                          </div>
+                          <div class="col-md-3">
+                               <select name="branch_location[]" id="branch_location_state" class="form-control states" required="required">
+                                          <option value="">Select State/Province</option>
+                                      </select>
+                          </div>
+                          <div class="col-md-3">
+                               <select name="branch_location_city" class="form-control cities" required="required">
+                                          <option value="">Select City</option>
+                                      </select>
+                          </div>
+                          <div class="col-lg-3 col-lg-offset-3">
+                                <input id="branch_location_street" type="text" class="form-control" name="branch_location[]" required placeholder="Street/Road/Ave Name">
+                            </div>
+                            <div class="col-lg-3">
+                            <input id="branch_location_street" type="text" class="form-control" name="branch_location[]" required placeholder="Suite Number">
+                          </div>
+                          <div class="col-lg-3">
+                            <input id="branch_location_street" type="text" class="form-control" name="branch_location[]" required placeholder="Postal Code">
+                          </div>
+                          <div class="col-lg-offset-3 btn" style="position: relative; margin-top: 10px;">
                                         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">City Area</button>
                                 <ul class="dropdown-menu" style="min-width: 100px;">
                                   <li><a href="#" class="small" data-value="option1" tabIndex="-1">East<input type="checkbox"/ class="pull-right"></a></li>
@@ -31,6 +51,7 @@
                                   <li><a href="#" class="small" data-value="option5" tabIndex="-1">Center<input type="checkbox"/ class="pull-right"></a></li>
                                 </ul>
                                   </div>
+                          <p class="col-sm-offset-2 col-sm-10 help-block"></p>
                         </div>
 
                         <div class="form-group">
@@ -49,7 +70,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="efficiency" class="col-sm-1 control-label">Price:</label>
+                            <label for="efficiency" class="col-sm-offset-2 col-sm-1 control-label">Price:</label>
                             <div class="col-sm-2">
                                 <input id="efficiency" type="text" class="form-control" name="efficiency" placeholder="">
                             </div>
@@ -61,10 +82,10 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <label class="control-label col-sm-6 text-left">
-                                for standard packages (20cm x 20cm x 20cm, 0.5 kg)
-                            </label>
+                          <p class="col-sm-offset-2 col-sm-10 help-block">for standard packages (20cm x 20cm x 20cm, 0.5 kg)
+</p>
                         </div>
+
                     </form>
                 </div>
             </div>

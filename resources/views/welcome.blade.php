@@ -7,6 +7,7 @@ $countries = DB::select('select * from countries');
 <div id="successMessageRegister alert alert-success"></div>
 
 <div class="row">
+<?php  ?>
         <div class="col-md-12">
         <div id="successMessage"></div>
 
